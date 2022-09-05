@@ -37,13 +37,13 @@ app.post('/task', async (req, res) => {
    
 })
 
-app.put('/task/:id', async (req, res) => {
+// app.put('/task/:id', async (req, res) => {
 
-})
+// })
 
-app.delete('/task/:id', () => {
+// app.delete('/task/:id', () => {
 
-})
+// })
 
 
 
