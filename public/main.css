@@ -2,4 +2,59 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: #333;
+    --highlight: #00a8cc;
 }
+
+.container {
+    width: 60%;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+
+#list{
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.list-item{
+    font-size: 2rem;
+    font-style: italic;
+    border-bottom: 3px dotted var(--highlight);
+    padding: 1rem
+}
+
+#input{
+    width: 100%;
+    font-size: 1.4rem;
+    padding: .4rem;
+    border: none;
+    border-bottom: 1px solid var(--highlight);
+    margin-top: 1rem;
+    transition: padding .3s ease;
+}
+
+#input:focus{
+    outline: none;
+    padding: 0.8rem;
+}
+
+#submit{
+    background: var(--highlight);
+    color: #f4f4f4;
+    padding: 1rem;
+    border: none;
+    margin-top: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+#submit:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    }
