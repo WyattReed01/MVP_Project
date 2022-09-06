@@ -11,11 +11,11 @@ const apiURL = "https://sleepy-eyrie-67463.herokuapp.com"
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const text = input.value
-    const li = document.createElement('li')
-    li.className = 'list-item'
-    li.textContent = text;
-    list.appendChild(li)
-    input.value = "";
+    // const li = document.createElement('li')
+    // li.className = 'list-item'
+    // li.textContent = text;
+    // list.appendChild(li)
+    // input.value = "";
     console.log(text)
     const description = text
     const dataObj = { description };
@@ -23,19 +23,19 @@ form.addEventListener('submit', async (e) => {
     const response = await fetch('/task', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataObj)
     })
-        .then((response) => response.json())
-        // .then((body) => {
-        //     // This is the JSON from our response
-        //     console.log(body);
-        // })
-        .catch((error) => {
-            // There was an error
-            console.error(error.message);
-        });
+        // .then((response) => response.json())
+        // // .then((body) => {
+        // //     // This is the JSON from our response
+        // //     console.log(body);
+        // // })
+        // .catch((error) => {
+        //     // There was an error
+        //     console.error(error.message);
+        // });
 
 });
 
