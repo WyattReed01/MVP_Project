@@ -16,13 +16,14 @@ form.addEventListener('submit', async (e) => {
     li.textContent = text;
     list.appendChild(li)
     input.value = "";
-    const body = { description: `${text}` };
+    const description = text
+    const dataObj = { description };
     const response = await fetch(apiURL + '/task', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
-          },
-        body: JSON.stringify(body)
+        },
+        body: JSON.stringify(dataObj)
     })
         .then((response) => response.json())
         .then((body) => {
