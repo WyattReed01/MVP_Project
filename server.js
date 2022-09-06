@@ -32,6 +32,7 @@ app.post('/task', async (req, res) => {
     try {
         const { description } = req.body
         const { rows } = await database.query('INSERT INTO tasks (description) VALUES($1) RETURNING *;', [description])
+        console.log(description)
         res.json(rows)
     } catch (error) {
         res.json(error.message)
