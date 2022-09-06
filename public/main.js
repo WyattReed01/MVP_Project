@@ -20,7 +20,7 @@ form.addEventListener('submit', (e) => {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const body = { description };
-    const response = await fetch(apiURL + '/tasks', {
+    const response = await fetch(apiURL + '/task', {
         method: 'POST',
         body: JSON.stringify(body)
     })
