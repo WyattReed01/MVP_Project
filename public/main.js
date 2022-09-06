@@ -17,8 +17,7 @@ form.addEventListener('submit', async (e) => {
     // list.appendChild(li)
     // input.value = "";
     console.log(text)
-    const description = text
-    const dataObj = { description };
+    const dataObj = { text };
     console.log(dataObj)
     const response = await fetch('/task', {
         method: 'POST',
