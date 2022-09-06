@@ -19,7 +19,9 @@ form.addEventListener('submit', (e) => {
 //post fetch
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const body = { description: input.value };
+    const text = input.value
+    input.value = "";
+    const body = { description: text };
     const response = await fetch(apiURL + '/task', {
         method: 'POST',
         body: JSON.stringify(body)
