@@ -6,12 +6,6 @@ const apiURL = "https://sleepy-eyrie-67463.herokuapp.com"
 
 
 //somehow tranform these into crud actions that call the database
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const text = input.value
-
-//     input.value = "";
-// })
 
 //post fetch
 form.addEventListener('submit', async (e) => {
@@ -25,7 +19,7 @@ form.addEventListener('submit', async (e) => {
     const body = { description: `${text}` };
     const response = await fetch(apiURL + '/task', {
         method: 'POST',
-        body: JSON.stringify(text)
+        body: JSON.stringify(body)
     })
         .then((response) => response.json())
         .then((body) => {
@@ -38,10 +32,6 @@ form.addEventListener('submit', async (e) => {
         });
 
 });
-
-
-
-
 
 
 
