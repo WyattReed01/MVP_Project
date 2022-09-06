@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
     const description = text
     const dataObj = { description };
     console.log(dataObj)
-    const response = await fetch(apiURL + '/task', {
+    const response = await fetch('/task', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -28,6 +28,10 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify(dataObj)
     })
         .then((response) => response.json())
+        // .then((body) => {
+        //     // This is the JSON from our response
+        //     console.log(body);
+        // })
         .catch((error) => {
             // There was an error
             console.error(error.message);
