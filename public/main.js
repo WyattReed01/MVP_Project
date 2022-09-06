@@ -28,10 +28,6 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify(dataObj)
     })
         .then((response) => response.json())
-        .then((body) => {
-            // This is the JSON from our response
-            console.log(body);
-        })
         .catch((error) => {
             // There was an error
             console.error(error.message);
