@@ -2,7 +2,7 @@ const list = document.querySelector('#list')
 const form = document.querySelector('#form')
 const input = document.querySelector('#input')
 const btn = document.querySelector('#btn')
-const apiURL = "https://sleepy-eyrie-67463.herokuapp.com/tasks"
+const apiURL = "https://sleepy-eyrie-67463.herokuapp.com"
 
 
 //somehow tranform these into crud actions that call the database
