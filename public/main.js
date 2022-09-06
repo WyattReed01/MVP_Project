@@ -24,16 +24,16 @@ form.addEventListener('submit', async (e) => {
     const body = { description: `${text}` };
     const response = await fetch(apiURL + '/task', {
         method: 'POST',
-        body: JSON.stringify(body)
+        body: JSON.stringify(text)
     })
         .then((response) => response.json())
         .then((body) => {
             // This is the JSON from our response
             console.log(body);
         })
-        .catch((err) => {
+        .catch((error) => {
             // There was an error
-            console.warn('Something went wrong.', err);
+            console.error(error.message);
         });
 
 });
