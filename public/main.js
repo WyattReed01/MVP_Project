@@ -19,6 +19,9 @@ form.addEventListener('submit', async (e) => {
     const body = { description: `${text}` };
     const response = await fetch(apiURL + '/task', {
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
         body: JSON.stringify(body)
     })
         .then((response) => response.json())
