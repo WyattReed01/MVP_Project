@@ -16,11 +16,13 @@
 #list{
     margin-top: 1rem;
     list-style: none;
+    display: block;
 }
 
 .list-item{
     font-size: 2rem;
     font-style: italic;
+    display: block;
     border-bottom: 3px dotted var(--highlight);
     padding: 1rem
 }

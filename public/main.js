@@ -2,6 +2,8 @@ const list = document.querySelector('#list')
 const form = document.querySelector('#form')
 const input = document.querySelector('#input')
 const btn = document.querySelector('#btn')
+const oneItem = document.querySelector('#oneItem')
+const formTwo = document.querySelector('#formTwo')
 const apiURL = "https://sleepy-eyrie-67463.herokuapp.com"
 
 //somehow tranform these into crud actions that call the database
@@ -19,18 +21,23 @@ form.addEventListener('submit', async (e) => {
         },
         body: JSON.stringify(dataObj)
     })
-    const data = await response.json()
-    appendLi(data[0].description)
+    const arr = await response.json()
+    appendLi(arr[0].description)
+    edit(arr)
 });
 
-const appendLi = (data) => {
+const appendLi = (arr) => {
     const li = document.createElement('li')
+    li.id = arr.id
     li.className = 'list-item'
-    li.textContent = data
+    li.textContent = arr.description
     list.appendChild(li)
-
+    clickLi(li.id)
 }
 
+const hideMe = () => {
+    list.style.display = "none";
+}
 
 // get all fetch
 const getAll = async () => {
@@ -38,10 +45,12 @@ const getAll = async () => {
         const response = await fetch('http://localhost:3003/task')
         const data = await response.json()
         console.log(data)
-        Object.keys(data).forEach((key)=>{
-            appendLi((data[key].description))
+        Object.keys(data).forEach((key) => {
+            const arr = data[key]
+            appendLi(arr)
+            
         })
-        
+
     } catch (error) {
         console.error(error.message)
     }
@@ -49,7 +58,35 @@ const getAll = async () => {
 
 getAll();
 // get 1 fetch
+const clickLi = (li) => {
+    const getLi = document.getElementById(li)
+    getLi.addEventListener('click', () => {
+        console.log('got it')
+        oneItem.appendChild(getLi)
+        hideMe();
+    })
+}
 
 //put fetch
+const edit = (arr) =>{
+    formTwo.addEventListener('submit', async (e)=>{
+        e.preventDefault();
+        const id = arr.id
+        console.log(id)
+        const description = input.value
+        input.value = ""
+        const dataObj = { description };
+        const response = await fetch(`http://localhost:3003/task/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataObj)
+        })
+        const edited = await response.json()
+        console.log(arr);
+    })
+}
+
 
 //delete all fetch
