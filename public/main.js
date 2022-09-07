@@ -4,44 +4,50 @@ const input = document.querySelector('#input')
 const btn = document.querySelector('#btn')
 const apiURL = "https://sleepy-eyrie-67463.herokuapp.com"
 
-
 //somehow tranform these into crud actions that call the database
 
 //post fetch
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const text = input.value
-    // const li = document.createElement('li')
-    // li.className = 'list-item'
-    // li.textContent = text;
-    // list.appendChild(li)
-    // input.value = "";
-    console.log(text)
-    const dataObj = { text };
-    console.log(dataObj)
-    const response = await fetch('/task', {
+    const description = input.value
+    input.value = ""
+    const dataObj = { description };
+    const response = await fetch('http://localhost:3003/task', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(dataObj)
     })
-        // .then((response) => response.json())
-        // // .then((body) => {
-        // //     // This is the JSON from our response
-        // //     console.log(body);
-        // // })
-        // .catch((error) => {
-        //     // There was an error
-        //     console.error(error.message);
-        // });
-
+    const data = await response.json()
+    appendLi(data[0].description)
 });
 
+const appendLi = (data) => {
+    const li = document.createElement('li')
+    li.className = 'list-item'
+    li.textContent = data
+    list.appendChild(li)
+
+}
 
 
 // get all fetch
+const getAll = async () => {
+    try {
+        const response = await fetch('http://localhost:3003/task')
+        const data = await response.json()
+        console.log(data)
+        Object.keys(data).forEach((key)=>{
+            appendLi((data[key].description))
+        })
+        
+    } catch (error) {
+        console.error(error.message)
+    }
+}
 
+getAll();
 // get 1 fetch
 
 //put fetch
